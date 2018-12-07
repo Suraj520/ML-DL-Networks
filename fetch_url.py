@@ -29,6 +29,7 @@ exec(get_hyperlinks)
 def UniqueSection(url):
     Sections = get_hyperlinks(url)
     OutputTags=[]
+    OutputTags.append(url)
     for i in Sections:
         if i.startswith('https')!=True:
             OutputTags.append(root_url + i)
@@ -36,9 +37,17 @@ def UniqueSection(url):
 # print(get_hyperlinks)
 
 
-#def crawl(root_url, n_workers, get_hyperlinks):
-#    for j in range(n_workers)
+def crawl(root_url, n_workers, get_hyperlinks):
+    ThreadRunner=[]
+    for j in range(n_workers):
+        for k in Sections:
+            ThreadRunner.append(threading.thread(target= UniqueSection, args =(k)))
+        ThreadRunner[j].start()
+        ThreadRunner[j].join()
+
+print(root_url, n_workers,get_hyperlinks)
         
+                                                 
         
 #    exec(get_hyperlinks)
 #    print(get_hyperlinks(root_url))
