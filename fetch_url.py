@@ -4,17 +4,16 @@
 import sys
 import re
 import time
-from threading import Thread
 Input=[]
 while True:
     try:
-        input_ =input().split()
+        input_ =input()
         if input_ == 'EOF':
             break
         Input.append(input_)
-    except EOFError:
+    except:
         pass
-#print(Input)       
+      
 # The function is expected to return a LIST
 # The function accepts following parameters:
 #  1. STRING root_url
@@ -26,6 +25,8 @@ n_workers = int(Input[1])
 get_hyperlinks = Input[2:]
 get_hyperlinks="\n".join(get_hyperlinks)
 exec(get_hyperlinks)
+# print(get_hyperlinks(root_url))
+
 def UniqueSection(url):
     Sections = get_hyperlinks(url)
     OutputTags=[]
@@ -34,8 +35,8 @@ def UniqueSection(url):
         if i.startswith('https')!=True:
             OutputTags.append(root_url + i)
     return OutputTags
-# print(get_hyperlinks)
-
+print(UniqueSection(root_url))
+'''
 
 def crawl(root_url, n_workers, get_hyperlinks):
     ThreadRunner=[]
@@ -45,7 +46,7 @@ def crawl(root_url, n_workers, get_hyperlinks):
         ThreadRunner[j].start()
         ThreadRunner[j].join()
 
-print(root_url, n_workers,get_hyperlinks)
+# print(root_url, n_workers,get_hyperlinks)
         
                                                  
         
@@ -57,6 +58,8 @@ print(root_url, n_workers,get_hyperlinks)
 #        OutputTags.append(i)
 #    return get_hyperlinks(root_url)
 
-#print(crawl(root_url,n_workers, get_hyperlinks))
+# print(crawl(root_url,n_workers, get_hyperlinks))
 
-    # Write your code here
+#     Write your code here
+
+'''
